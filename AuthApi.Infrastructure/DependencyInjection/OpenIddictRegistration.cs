@@ -20,6 +20,7 @@ namespace AuthApi.Infrastructure.DependencyInjection
                     options
                     .SetAuthorizationEndpointUris("connect/authorize")
                     .SetTokenEndpointUris("/connect/token")
+                    .SetUserInfoEndpointUris("/connect/userinfo")
                     .SetEndSessionEndpointUris("/connect/logout");
 
                     //options.AllowClientCredentialsFlow();
@@ -33,7 +34,8 @@ namespace AuthApi.Infrastructure.DependencyInjection
                     options.UseAspNetCore()
                            .EnableEndSessionEndpointPassthrough()
                            .EnableAuthorizationEndpointPassthrough()
-                           .EnableTokenEndpointPassthrough();
+                           .EnableTokenEndpointPassthrough()
+                           .EnableUserInfoEndpointPassthrough();
                 })
 
                 .AddValidation(options =>
